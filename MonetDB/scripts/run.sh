@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -d "/data/db" ]; then
+if [ ! -d "/data/dbfarm/db" ]; then
  . /home/monetdb/init-db.sh
 fi
 
