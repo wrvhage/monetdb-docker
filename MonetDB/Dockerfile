@@ -49,8 +49,7 @@ RUN yum install -y http://dev.monetdb.org/downloads/epel/MonetDB-release-epel-1.
 RUN yum update -y && \
     yum upgrade -y
 
-# Install MonetDB
-RUN yum install -y MonetDB-SQL-server5-hugeint-11.21.11
+RUN yum install -y MonetDB-SQL-server5-hugeint-11.21.13
 RUN yum install -y MonetDB-client
 # Install the MonetDB/GEOM module
 RUN yum install -y MonetDB-geom-MonetDB5
@@ -65,7 +64,7 @@ RUN yum -y clean all
 #######################################################
 # Setup MonetDB
 #######################################################
-# Add helper scripts    
+# Add helper scripts
 COPY scripts/set-monetdb-password.sh /home/monetdb/set-monetdb-password.sh
 RUN chmod +x /home/monetdb/set-monetdb-password.sh
 
