@@ -38,6 +38,11 @@ for i in {30..0}; do
     break
 	fi
 done
+
+runuser -l  monetdb -c 'monetdb stop db'
+
+runuser -l  monetdb -c 'monetdbd stop'
+
 if [ "$i" = 0 ]; then
 	echo >&2 'MonetDB startup failed'
 	exit 1
