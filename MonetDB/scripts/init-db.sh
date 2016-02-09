@@ -12,19 +12,19 @@ function test_monetdb_connection() {
 chown -R monetdb:monetdb /var/monetdb5
 cd /home/monetdb
 
-if [ ! -d "/var/monetdb5/dbfarm" ]; then
-    runuser -l  monetdb -c 'monetdbd create /var/monetdb5/dbfarm'
+if [ ! -d "/data" ]; then
+    runuser -l  monetdb -c 'monetdbd create /data'
 else
-    echo "Existing dbfarm found in '/var/monetdb5/dbfarm'"
+    echo "Existing dbfarm found in '/data'"
 fi
-runuser -l  monetdb -c 'monetdbd start /var/monetdb5/dbfarm'
+runuser -l  monetdb -c 'monetdbd start /data'
 sleep 5
-if [ ! -d "/var/monetdb5/dbfarm/db" ]; then
+if [ ! -d "/data/db" ]; then
     runuser -l  monetdb -c 'monetdb create db && \
         monetdb set embedr=true db && \
         monetdb release db'
 else
-    echo "Existing database found in '/var/monetdb5/dbfarm/db'"
+    echo "Existing database found in '/data/db'"
 fi
 runuser -l  monetdb -c 'monetdb start db'
 
@@ -43,7 +43,7 @@ if [ "$i" = 0 ]; then
 	exit 1
 fi
 
-mkdir -p /var/log/monetdb
-chown -R monetdb:monetdb /var/log/monetdb
+mkdir -p /data/log
+chown -R monetdb:monetdb /data/log
 
 echo "Initialization done"

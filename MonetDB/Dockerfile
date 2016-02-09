@@ -77,17 +77,21 @@ COPY configs/.monetdb /home/monetdb/.monetdb
 COPY scripts/init-db.sh /home/monetdb/init-db.sh
 RUN chmod +x /home/monetdb/init-db.sh
 
+COPY scripts/run.sh /home/monetdb/run.sh
+RUN chmod +x /home/monetdb/run.sh
+
 # Set the owner to monetdbs
 RUN chown -R monetdb:monetdb /home/monetdb
 
-VOLUME $PWD /var/monetdb5/dbfarm
+VOLUME ["/data"]
 
 # Init the db in a scipt to allow more than one process to run in the container
 # We need two: one for monetdbd and one for mserver
 # The sript will init the database with using the unpreveledged user monetdb
-RUN sh /home/monetdb/init-db.sh
+# RUN sh /home/monetdb/init-db.sh
 
 #######################################################
 # Startup scripts
 #######################################################
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+# CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD ["/home/monetdb/run.sh"]
