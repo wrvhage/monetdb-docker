@@ -1,0 +1,19 @@
+datastore:
+    build: datastore
+    volumes:
+        - /data
+    command: /bin/sh
+    stdin_open: true
+monetdb:
+    build: monetdb
+    ports:
+      - "50000:50000"
+    volumes_from:
+      - datastore
+    stdin_open: true
+rstudio:
+    image: rocker/rstudio
+    ports:
+      - "8787:8787"
+    links:
+      - monetdb
