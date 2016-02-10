@@ -1,3 +1,2 @@
 FROM alpine
 
-VOLUME ["/data"]
