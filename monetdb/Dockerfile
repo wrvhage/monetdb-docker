@@ -82,7 +82,6 @@ RUN chmod +x /home/monetdb/run.sh
 # Set the owner to monetdbs
 RUN chown -R monetdb:monetdb /home/monetdb
 
-
 # Init the db in a scipt to allow more than one process to run in the container
 # We need two: one for monetdbd and one for mserver
 # The sript will init the database with using the unpreveledged user monetdb

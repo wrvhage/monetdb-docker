@@ -9,6 +9,9 @@ function test_monetdb_connection() {
   return 1
 }
 
+# assume no external volume
+#mkdir -p /data
+
 chown -R monetdb:monetdb /data
 cd /home/monetdb
 
@@ -41,7 +44,7 @@ done
 
 runuser -l  monetdb -c 'monetdb stop db'
 
-runuser -l  monetdb -c 'monetdbd stop'
+runuser -l  monetdb -c 'monetdbd stop /data/dbfarm'
 
 if [ "$i" = 0 ]; then
 	echo >&2 'MonetDB startup failed'

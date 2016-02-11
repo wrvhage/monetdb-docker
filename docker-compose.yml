@@ -6,6 +6,7 @@ datastore:
     stdin_open: true
 monetdb:
     build: monetdb
+#    image: monetdb/monetdb-r-docker
     ports:
       - "50001:50000"
     volumes_from:
