@@ -7,7 +7,7 @@ datastore:
 monetdb:
     build: monetdb
     ports:
-      - "50000:50000"
+      - "50001:50000"
     volumes_from:
       - datastore
     stdin_open: true

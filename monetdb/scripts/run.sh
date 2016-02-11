@@ -1,7 +1,10 @@
 #!/bin/bash
 
 if [ ! -d "/data/dbfarm/db" ]; then
- . /home/monetdb/init-db.sh
+  echo "Setting up MonetDB Database Farm"
+  . /home/monetdb/init-db.sh
+#  echo "Setting up password"
+#  . /home/monetdb/set-monetdb-password.sh
 fi
 
 #/usr/bin/supervisord -n -c /etc/supervisor/conf.d/supervisord.conf
