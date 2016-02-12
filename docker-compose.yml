@@ -6,14 +6,13 @@ datastore:
     stdin_open: true
 monetdb:
     build: monetdb
-#    image: monetdb/monetdb-r-docker
     ports:
       - "50001:50000"
     volumes_from:
       - datastore
     stdin_open: true
-rstudio:
-    image: rocker/rstudio
+rig:
+    build: rig
     ports:
       - "8787:8787"
     links:
